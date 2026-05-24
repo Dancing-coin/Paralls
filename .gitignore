@@ -1,0 +1,5 @@
+.omx/
+.sixth/
+*.log
+Thumbs.db
+.DS_Store
