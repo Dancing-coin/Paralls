@@ -70,7 +70,7 @@ Roles:
 
 ### 3.3 Core Document Layer
 
-Located under `docs/core/`.
+Located under `docs/phase1/core/`.
 
 These are the first-batch formal project documents:
 
@@ -88,7 +88,7 @@ These docs are outputs derived from the consolidation layer, not direct substitu
 
 ### 3.4 Expansion Layer
 
-Future deeper docs should live under `docs/expansion/` or another clearly named subtree, not in the repo root.
+Future deeper docs should live under `docs/phase1/expansion/` or another clearly named subtree, not in the repo root.
 
 ### 3.5 Old Drafts
 
@@ -114,7 +114,7 @@ When documents disagree, use this order:
 2. latest applicable turn in `filtered_conversation_split/`
 3. `docs/consolidation/03-冲突与覆盖表.md`
 4. `docs/consolidation/01-决策总表.md`
-5. the relevant `docs/core/*.md`
+5. the relevant `docs/phase1/core/*.md`
 6. stale root-level drafts for reference only
 
 If `01-决策总表.md` and the latest supporting turns disagree, the turns win and the consolidation docs must be updated immediately.
@@ -296,7 +296,7 @@ Default loop for this repo:
 1. inspect relevant source turns
 2. compare early and late versions
 3. update `docs/consolidation/`
-4. draft or revise the target `docs/core/` document
+4. draft or revise the target `docs/phase1/core/` document
 5. verify traceability and phase alignment
 6. report changed files and remaining unresolved questions
 

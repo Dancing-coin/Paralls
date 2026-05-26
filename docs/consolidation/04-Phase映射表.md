@@ -103,6 +103,12 @@
 
 | 决策ID | 轮次 | 回填目标文档 | 状态 | 说明 |
 | :--- | :--- | :--- | :---: | :--- |
-| D104-D108 | `406-419` | `世界构建与创作系统设计`、`技术架构总纲`、`核心玩法机制设计`、`Phase 1 项目计划书`、`商业与生态设计`、`08-V1联调映射表-世界构建与创作`、`09-V1实现任务清单-世界构建与创作` | 🟡 | 第二轮协议与联调映射已完成，并已拆成可排期任务；待实现联调与数值校准 |
-| D109-D113 | `420-430` | `技术架构总纲`、`司命设计文档`、`事件总线与感知链路设计`、`Phase 1 项目计划书` | ✅ | L3 双链路、司命并发分级、子智能体与路由边界已回填 |
-| D114-D119 | `431-437` | `技术架构总纲`、`Phase 1 项目计划书`、`商业与生态设计`、`司命设计文档`、`事件总线与感知链路设计` | ✅ | 硬件自适应路由、云游戏供给归属、成本拆账与优化节奏已回填 |
+| D120（创造能力族承载） | `406-450`（当前已产出 `406-437`） | [创造系统总纲](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/创造系统总纲.md)、[建筑建造与蓝图系统设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/建筑建造与蓝图系统设计.md)、[世界创建与地图映射系统设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/世界创建与地图映射系统设计.md)、[生物与物件创造系统设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/生物与物件创造系统设计.md)、[创造运行时与规则封装设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/创造运行时与规则封装设计.md)、[创造表现层（L3）设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/创造表现层（L3）设计.md)、[创造算力与部署策略设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/创造算力与部署策略设计.md)、[技术架构总纲](/d:/Projects/Paralls/docs/phase1/core/00-总纲/技术架构总纲.md)、[Phase 1 项目计划书](/d:/Projects/Paralls/docs/phase1/core/04-商业与阶段/Phase 1 项目计划书.md) | ✅ | 已完成“总纲+子文档群”承载，逐轮落位见 `10-406-437逐轮覆盖矩阵-创造系统.md` |
+| D121（V1联调映射冻结） | `406-450`（当前已产出 `406-437`） | `08-V1联调映射表-创造系统` | ✅ | V1 最小事件、存储、动作、指标口径已冻结 |
+| D122（V1可排期任务） | `406-450`（当前已产出 `406-437`） | `09-V1实现任务清单-创造系统` | ✅ | Runtime/Service/Data/QA 四层任务与里程碑已形成 |
+| D109-D113（L3+司命并发） | `420-430` | [司命设计文档](/d:/Projects/Paralls/docs/phase1/core/01-运行时核心/司命设计文档.md)、[事件总线与感知链路设计](/d:/Projects/Paralls/docs/phase1/core/01-运行时核心/事件总线与感知链路设计.md)、[创造表现层（L3）设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/创造表现层（L3）设计.md) | 🟡 | 结构已回填，需继续补高并发SLA与背压阈值 |
+| D114-D119（算力与部署） | `431-437` | [创造算力与部署策略设计](/d:/Projects/Paralls/docs/phase1/expansion/02-创造系统/创造算力与部署策略设计.md)、[Phase 1 项目计划书](/d:/Projects/Paralls/docs/phase1/core/04-商业与阶段/Phase 1 项目计划书.md)、[商业与生态设计](/d:/Projects/Paralls/docs/phase1/core/04-商业与阶段/商业与生态设计.md) | ✅ | 硬件评估、云地路由、成本边界与优化节奏已回填 |
+
+
+
+
