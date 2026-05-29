@@ -336,9 +336,217 @@
 - 既然听到了片段，所以必然被接纳
 - 既然知道了什么，所以一定从头都在场
 
-## 8. 语义示例
+## 8. AwarenessResolution
 
-### 8.1 MembershipResolution 示例
+### 8.1 用途
+
+回答：
+
+- 谁知道谁在场
+- 谁知道别人知道自己在场
+- 哪些知晓关系足以支撑成员资格判断
+
+### 8.2 Payload 字段
+
+- `conversation_id`
+- `subject_actor_id`
+- `object_actor_id`
+- `awareness_level`
+- `awareness_started_at`
+- `derived_from_access_quality`
+- `supports_membership_resolution`
+
+### 8.3 字段说明
+
+#### `subject_actor_id`
+
+谁在“知道”。
+
+#### `object_actor_id`
+
+被知道在场的是谁。
+
+#### `awareness_level`
+
+知晓等级，枚举：
+
+- `none`
+- `presence_known`
+- `mutual_presence_known`
+
+#### `awareness_started_at`
+
+这条知晓关系从何时起成立。
+
+#### `derived_from_access_quality`
+
+这条知晓关系主要建立在哪种接入质量之上。
+
+#### `supports_membership_resolution`
+
+布尔值，表示该知晓关系是否足以支撑成员资格判断。
+
+### 8.4 语义约束
+
+- 它回答的是知晓关系，不回答知识内容
+- 它不能替代 `MembershipResolution`
+- 它不能脱离 `conversation_id` 单独当长期社交关系使用
+
+## 9. PrivacyRiskResolution
+
+### 9.1 用途
+
+回答：
+
+- 这场会话当前的隐私是否正在被破坏
+- 哪个角色的暴露风险正在上升
+- 是否需要驱动降声、换位、停话或转移
+
+### 9.2 Payload 字段
+
+- `conversation_id`
+- `actor_id`
+- `privacy_pressure`
+- `exposure_risk`
+- `risk_source`
+- `risk_started_at`
+- `bounded_by_private_context`
+
+### 9.3 字段说明
+
+#### `actor_id`
+
+这条隐私 / 暴露风险主要作用到谁。
+
+#### `privacy_pressure`
+
+当前隐私紧张度，当前只要求可分级表达，不冻结具体数值制式。
+
+#### `exposure_risk`
+
+当前暴露风险，当前同样只要求可分级表达。
+
+#### `risk_source`
+
+风险来源，枚举建议至少包括：
+
+- `new_listener_approach`
+- `door_or_window_opened`
+- `noise_drop`
+- `line_of_sight_exposed`
+- `speaker_volume_increase`
+- `group_expansion`
+
+#### `risk_started_at`
+
+该风险从何时开始成立。
+
+#### `bounded_by_private_context`
+
+表示该风险是否发生在 `private` 边界内。
+
+### 9.4 语义约束
+
+- 它不直接判定是否已泄密
+- 它只输出风险和压力，不输出最终知识扩散结果
+- 角色侧可以基于它调整行为，但不能把它当成既成知识事实
+
+## 10. ConversationBoundaryChange
+
+### 10.1 用途
+
+回答：
+
+- 会话边界是否变化了
+- 会话是否从 `open` 收紧为 `local/private`
+- 传播裁剪是否应重新计算
+
+### 10.2 Payload 字段
+
+- `conversation_id`
+- `previous_conversation_open_level`
+- `conversation_open_level`
+- `changed_at`
+- `change_cause`
+- `boundary_scope_snapshot`
+
+### 10.3 字段说明
+
+#### `previous_conversation_open_level`
+
+变化前的开放度。
+
+#### `conversation_open_level`
+
+变化后的开放度，枚举：
+
+- `open`
+- `local`
+- `private`
+
+#### `changed_at`
+
+变化发生时间。
+
+#### `change_cause`
+
+变化原因，枚举建议至少包括：
+
+- `volume_lowered`
+- `group_tightened`
+- `door_closed`
+- `position_shifted`
+- `new_listener_entered`
+- `explicit_private_signal`
+
+#### `boundary_scope_snapshot`
+
+可选快照，用于记录变化时的 `scene / zone / dialog_group` 范围。
+
+### 10.4 语义约束
+
+- 它回答的是传播边界变化，不是成员资格变化
+- 它不能单独推出谁已被排斥或谁已接入
+- 它主要服务感知链重新裁剪、偷听概率重算和角色行为调整
+
+## 11. 六件套关系
+
+### 11.1 角色分工
+
+- `AccessResolution`
+  回答：我从什么时候开始接入、接入了多少
+
+- `AwarenessResolution`
+  回答：我和别人是否互相知道在场
+
+- `ConversationBoundaryChange`
+  回答：这场会话的开放边界是否变化了
+
+- `MembershipResolution`
+  回答：我在会话里的社会身份是什么
+
+- `PrivacyRiskResolution`
+  回答：这场会话现在危险不危险
+
+- `KnowledgeResolution`
+  回答：我现在到底知道了什么
+
+### 11.2 推荐顺序
+
+若把六类都排入最小顺序，当前建议：
+
+1. `AccessResolution`
+2. `AwarenessResolution`
+3. `ConversationBoundaryChange`
+4. `MembershipResolution`
+5. `PrivacyRiskResolution`
+6. `KnowledgeResolution`
+
+语义边界上，第 3 和第 4 在某些实现里可局部迭代，但都不能早于接入与知晓。
+
+## 12. 语义示例
+
+### 12.1 MembershipResolution 示例
 
 场景：`C` 走近 `A/B` 的局部对话，双方已互相知晓，`C` 尚未开口，因此被判定为 `passive_member`。
 
@@ -357,7 +565,7 @@
 }
 ```
 
-### 8.2 AccessResolution 示例
+### 12.2 AccessResolution 示例
 
 场景：`D` 站在书房门外，听到一点耳语，只捕捉到片段。
 
@@ -374,7 +582,7 @@
 }
 ```
 
-### 8.3 KnowledgeResolution 示例
+### 12.3 KnowledgeResolution 示例
 
 场景：`D` 虽然只偷听到片段，但已经形成“怀疑 A 和 B 在讨论某个秘密”的知识状态。
 
@@ -390,23 +598,30 @@
 }
 ```
 
-## 9. 当前冻结结论
+## 13. 当前冻结结论
 
-当前先冻结三类会话确认事件的最小语义 schema：
+当前先冻结六类会话确认事件的最小语义 schema：
 
 - `MembershipResolution`
 - `AccessResolution`
 - `KnowledgeResolution`
+- `AwarenessResolution`
+- `PrivacyRiskResolution`
+- `ConversationBoundaryChange`
 
-它们共同构成最小协议闭环：
+其中前三类构成最小闭环，后三类构成支撑与修正上下文：
 
-- 角色在会话中的社会身份
-- 角色从何时开始真正接入
-- 角色对具体信息当前到底知道了什么
+- `MembershipResolution`：角色在会话中的社会身份
+- `AccessResolution`：角色从何时开始真正接入、接入了多少
+- `KnowledgeResolution`：角色对具体信息当前到底知道了什么
+- `AwarenessResolution`：会话中的互相知晓关系
+- `PrivacyRiskResolution`：当前隐私与暴露风险
+- `ConversationBoundaryChange`：会话开放边界的变化
 
 后续若进入具体协议实现，必须继续保持以下边界：
 
-- 不把这三类事件混成一类
+- 不把六类事件混成一类
 - 不把它们回写伪装成 `L1` 原始事实
 - 不让 `KnowledgeResolution` 越过 `AccessResolution` 的时间边界
 - 不让成员资格替代知识状态，不让接入质量替代成员资格
+- 不让边界变化或风险评估伪装成知识确认结果
