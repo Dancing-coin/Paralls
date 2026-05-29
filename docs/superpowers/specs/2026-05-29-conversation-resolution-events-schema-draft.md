@@ -351,6 +351,7 @@
 - `conversation_id`
 - `subject_actor_id`
 - `object_actor_id`
+- `target_actor_id` 可选
 - `awareness_level`
 - `awareness_started_at`
 - `derived_from_access_quality`
@@ -365,6 +366,18 @@
 #### `object_actor_id`
 
 被知道在场的是谁。
+
+#### `target_actor_id`
+
+当需要表达二阶知晓时，用于明确“被知道在场的目标主体是谁”。
+
+典型场景：
+
+- `subject_actor_id` 知道
+- `object_actor_id` 知道
+- `target_actor_id` 在场
+
+若仅表达一阶知晓，可不填此字段。
 
 #### `awareness_level`
 
@@ -406,7 +419,6 @@
 
 - `conversation_id`
 - `actor_id`
-- `privacy_pressure`
 - `exposure_risk`
 - `risk_source`
 - `risk_started_at`
@@ -418,13 +430,9 @@
 
 这条隐私 / 暴露风险主要作用到谁。
 
-#### `privacy_pressure`
-
-当前隐私紧张度，当前只要求可分级表达，不冻结具体数值制式。
-
 #### `exposure_risk`
 
-当前暴露风险，当前同样只要求可分级表达。
+当前暴露风险，当前只要求可分级表达。它代表司命高阶知识图谱对“这场会话是否正在变得更容易泄露”的相对客观判断。
 
 #### `risk_source`
 
@@ -448,7 +456,8 @@
 ### 9.4 语义约束
 
 - 它不直接判定是否已泄密
-- 它只输出风险和压力，不输出最终知识扩散结果
+- 它不输出角色主观 `privacy_pressure`；后者由角色本地状态承接与解释
+- 它不输出最终知识扩散结果
 - 角色侧可以基于它调整行为，但不能把它当成既成知识事实
 
 ## 10. ConversationBoundaryChange
@@ -531,18 +540,23 @@
 - `KnowledgeResolution`
   回答：我现在到底知道了什么
 
-### 11.2 推荐顺序
+### 11.2 依赖关系
 
-若把六类都排入最小顺序，当前建议：
+六件套更适合写成依赖关系，而不是唯一固定流水线：
 
-1. `AccessResolution`
-2. `AwarenessResolution`
-3. `ConversationBoundaryChange`
-4. `MembershipResolution`
-5. `PrivacyRiskResolution`
-6. `KnowledgeResolution`
+- `ConversationBoundaryChange` 依赖原始空间 / 声学 / 边界事实
+- `AccessResolution` 依赖原始空间 / 声学 / 感知上下文
+- `AwarenessResolution` 依赖 `AccessResolution`
+- `MembershipResolution` 依赖 `AccessResolution` 与 `AwarenessResolution`
+- `PrivacyRiskResolution` 依赖 `ConversationBoundaryChange`、`AccessResolution` 与当前会话开放度
+- `KnowledgeResolution` 依赖 `AccessResolution`，并通常受到成员态、共享路径与会话边界影响
 
-语义边界上，第 3 和第 4 在某些实现里可局部迭代，但都不能早于接入与知晓。
+最低硬约束：
+
+- `AwarenessResolution` 不能早于 `AccessResolution`
+- `MembershipResolution` 不能早于 `AccessResolution` 与 `AwarenessResolution`
+- `KnowledgeResolution` 不能跳过 `AccessResolution`
+- `ConversationBoundaryChange` 与 `AccessResolution` 可以因原始事实变化而反复迭代，但都不得伪装成高阶知识真值
 
 ## 12. 语义示例
 
