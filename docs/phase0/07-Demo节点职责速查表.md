@@ -38,3 +38,7 @@
 ## 3. 一句话收束
 
 这张表的意义是：任何人看 `Phase 0` Demo 图时，都能立刻分清“谁负责世界真值、谁负责角色主观链、谁负责本地表现、谁负责桥接”。
+
+## 4. 上位约束
+
+- `Godot Client` 与 `Local Presentation Bus` 的边界解释，统一以上游 [Godot源码底层基础设施与运行时约束.md](/d:/Projects/Paralls/docs/phase1/core/00-总纲/Godot源码底层基础设施与运行时约束.md) 为准。

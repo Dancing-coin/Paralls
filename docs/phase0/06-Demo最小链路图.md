@@ -77,11 +77,13 @@
 
 - 角色意图不是直接成功
 - 先过 `Godot/L1/ESM`
+- Godot 本地执行主轨应按 `AnimationTree + SkeletonModifier3D` 理解，而不是后端逐骨骼高频直控
 
 ### 4.2 视觉事实系统
 
 - 本地姿态/物体变化不会直接上传骨骼流
 - 先转成结构化 `VisualFactEvent`
+- 原始骨骼 / 表情高频流不上业务总线，这条边界以上游 [Godot源码底层基础设施与运行时约束.md](/d:/Projects/Paralls/docs/phase1/core/00-总纲/Godot源码底层基础设施与运行时约束.md) 为准
 
 ### 4.3 角色感知链
 
