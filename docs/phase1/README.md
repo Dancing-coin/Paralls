@@ -1,15 +1,26 @@
 # docs/phase1 目录结构
 
+## 项目级待办入口
+
+- [11-当前待办总表](/d:/Projects/Paralls/docs/consolidation/11-当前待办总表.md)
+
+## 相关阶段入口
+
+- [docs/phase0/README.md](/d:/Projects/Paralls/docs/phase0/README.md)
+
 ## 目录分层
 
 - `core`（Phase 1 必做）
   - `00-总纲`
     - 产品白皮书
     - 技术架构总纲
+    - Godot源码底层基础设施与运行时约束
   - `01-运行时核心`
     - 司命设计文档
     - 角色智能体设计文档
+    - 角色智能体/00-角色智能体总索引
     - 事件总线与感知链路设计
+    - 视觉事实系统/00-视觉事实系统总索引
     - 信息共享与知识状态设计
     - ESM设计文档
   - `03-玩法与内容`
@@ -19,7 +30,6 @@
     - AI陪伴与小世界设计
   - `04-商业与阶段`
     - 商业与生态设计
-    - Phase 0 启动方案
     - Phase 1 项目计划书
 
 - `expansion`（Phase 1 扩展 / Phase 2+ 预留）
@@ -38,5 +48,9 @@
 
 - `core` = Phase 1 必做。
 - `expansion` = Phase 1 可选扩展或 Phase 2+ 预留，不作为 Phase 1 验收硬门槛。
+- `phase0` = 进入 Phase 1 完整闭环前的预验证 demo 轨。
 - 新文档先判定是否为 Phase 1 必做，若不是，默认放 `expansion`。
 - 所有目录调整后，必须同步 `docs/consolidation/04-Phase映射表.md`。
+
+
+
