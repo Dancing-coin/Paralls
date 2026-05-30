@@ -12,6 +12,14 @@
 - [02-Demo范围与验收标准.md](/d:/Projects/Paralls/docs/phase0/02-Demo范围与验收标准.md)
 - [03-Demo联调清单.md](/d:/Projects/Paralls/docs/phase0/03-Demo联调清单.md)
 - [04-Demo演示脚本.md](/d:/Projects/Paralls/docs/phase0/04-Demo演示脚本.md)
+- [08-PlayerInput最小协议草案.md](/d:/Projects/Paralls/docs/phase0/08-PlayerInput最小协议草案.md)
+- [09-AIOutput最小协议草案.md](/d:/Projects/Paralls/docs/phase0/09-AIOutput最小协议草案.md)
+- [10-ObjectEnvironmentResult最小协议草案.md](/d:/Projects/Paralls/docs/phase0/10-ObjectEnvironmentResult最小协议草案.md)
+- [11-SimingMinimalOutput最小协议草案.md](/d:/Projects/Paralls/docs/phase0/11-SimingMinimalOutput最小协议草案.md)
+- [12-ESM最小设计与Phase0落位.md](/d:/Projects/Paralls/docs/phase0/12-ESM最小设计与Phase0落位.md)
+- [05-Demo技术构成图.md](/d:/Projects/Paralls/docs/phase0/05-Demo技术构成图.md)
+- [06-Demo最小链路图.md](/d:/Projects/Paralls/docs/phase0/06-Demo最小链路图.md)
+- [07-Demo节点职责速查表.md](/d:/Projects/Paralls/docs/phase0/07-Demo节点职责速查表.md)
 
 ## 阅读顺序
 
@@ -19,6 +27,14 @@
 2. [02-Demo范围与验收标准.md](/d:/Projects/Paralls/docs/phase0/02-Demo范围与验收标准.md)
 3. [03-Demo联调清单.md](/d:/Projects/Paralls/docs/phase0/03-Demo联调清单.md)
 4. [04-Demo演示脚本.md](/d:/Projects/Paralls/docs/phase0/04-Demo演示脚本.md)
+5. [08-PlayerInput最小协议草案.md](/d:/Projects/Paralls/docs/phase0/08-PlayerInput最小协议草案.md)
+6. [09-AIOutput最小协议草案.md](/d:/Projects/Paralls/docs/phase0/09-AIOutput最小协议草案.md)
+7. [10-ObjectEnvironmentResult最小协议草案.md](/d:/Projects/Paralls/docs/phase0/10-ObjectEnvironmentResult最小协议草案.md)
+8. [11-SimingMinimalOutput最小协议草案.md](/d:/Projects/Paralls/docs/phase0/11-SimingMinimalOutput最小协议草案.md)
+9. [12-ESM最小设计与Phase0落位.md](/d:/Projects/Paralls/docs/phase0/12-ESM最小设计与Phase0落位.md)
+10. [05-Demo技术构成图.md](/d:/Projects/Paralls/docs/phase0/05-Demo技术构成图.md)
+11. [06-Demo最小链路图.md](/d:/Projects/Paralls/docs/phase0/06-Demo最小链路图.md)
+12. [07-Demo节点职责速查表.md](/d:/Projects/Paralls/docs/phase0/07-Demo节点职责速查表.md)
 
 ## 与 phase1 的关系
 

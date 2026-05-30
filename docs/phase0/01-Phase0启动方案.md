@@ -27,6 +27,14 @@
 
 > 在最小投入下，我们能否证明智能体驱动的 3D 动态剧本杀核心链路可行？
 
+本文件当前偏回答：
+
+- 为什么现在要做 `Phase 0`
+- `Phase 0` 的边界在哪里
+- 哪些东西明确不在这次 demo 范围内
+
+更细的“到底要交付什么”和“通过标准是什么”，以下游 [02-Demo范围与验收标准.md](/d:/Projects/Paralls/docs/phase0/02-Demo范围与验收标准.md) 为准。
+
 ## 2. 时间线覆盖说明
 
 与 `Phase 0` 相关的前后版本中，当前采用以下顺序理解：
@@ -97,6 +105,11 @@
 - 如果当期成本过高，可先用静态图或简化反馈替代实时生成
 - `L3` 在 `Phase 0` 只需证明“能接”或“能替代性模拟”
 
+### 4.7 ESM 验证
+
+- `ESM` 在 `Phase 0` 只需证明“最小物体 / 环境状态执行与结构化结果回写”
+- 不要求完整环境物理系统
+
 ## 5. 不在 Phase 0 范围内
 
 `Phase 0` 明确不做：
@@ -119,3 +132,13 @@
 - [02-Demo范围与验收标准.md](/d:/Projects/Paralls/docs/phase0/02-Demo范围与验收标准.md)
 - [03-Demo联调清单.md](/d:/Projects/Paralls/docs/phase0/03-Demo联调清单.md)
 - [04-Demo演示脚本.md](/d:/Projects/Paralls/docs/phase0/04-Demo演示脚本.md)
+- [12-ESM最小设计与Phase0落位.md](/d:/Projects/Paralls/docs/phase0/12-ESM最小设计与Phase0落位.md)
+
+## 7. 建议联读
+
+若当前目标是让新工程师先快速看懂 `Phase 0` demo 的系统盒子、事件链和节点职责，建议继续联读：
+
+- [05-Demo技术构成图.md](/d:/Projects/Paralls/docs/phase0/05-Demo技术构成图.md)
+- [06-Demo最小链路图.md](/d:/Projects/Paralls/docs/phase0/06-Demo最小链路图.md)
+- [07-Demo节点职责速查表.md](/d:/Projects/Paralls/docs/phase0/07-Demo节点职责速查表.md)
+- [12-ESM最小设计与Phase0落位.md](/d:/Projects/Paralls/docs/phase0/12-ESM最小设计与Phase0落位.md)
